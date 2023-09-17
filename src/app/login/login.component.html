@@ -1,0 +1,31 @@
+
+<div class="container mt-5">
+  <h3>Login Forms</h3>
+  <hr>
+  <form #productForm="ngForm" (ngSubmit)="submitAddProductForm(productForm)">
+    <div class="mb-3">
+      <label for="product-email-controll" class="form-label">Email Address</label>
+      <input type="email" class="form-control" name="productEmail" id="product-email-controll"
+        aria-describedby="product_email_help" [(ngModel)]="product.productEmail" required minlength="3"
+        #productEmail="ngModel">
+    </div>
+
+    <div class="mb-3">
+      <label for="product-password-control" class="form-label">Password</label>
+      <input type="password" class="form-control" name="productPassword" id="product-password-control"
+        aria-describedby="product-password-help" [(ngModel)]="product.productPassword" required minlength="6"
+        #productPassword="ngModel" [ngModelOptions]="{updateOn: 'blur'}">
+
+      <div *ngIf="productPassword.touched && productPassword.invalid" id="product-password-help"
+        class="text-danger form-text">
+        <small *ngIf="productPassword.errors?.['required']" id="product-password-help">This field is required</small>
+        <small *ngIf="productPassword.errors?.['minlength']" id="product-password-help">Password must be at least 6 characters long</small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="productForm.invalid">LogIn</button>
+  </form>
+  <div class="mb-3 form-check text-center">
+    <p>Don't have an account? <a class="nav-link" href="register">Register</a></p>
+  </div>
+</div>

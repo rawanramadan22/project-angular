@@ -1,0 +1,18 @@
+<!-- <div *ngFor="let product of products" class="product-card">
+  <img [src]="product.thumbnail" alt="{{ product.title }}" />
+  <h2>{{ product.title }}</h2>
+  <p>{{ product.description }}</p>
+  <p>Price: {{ product.price | currency : "EGP" }}</p>
+
+</div> -->
+
+
+<div class="row m-5">
+  <app-product-card
+    *ngFor="let product of products"
+    [product]="product"
+    (addToCartClicked)="addToCart(product)"
+    class="col-4"
+  ></app-product-card>
+</div>
+

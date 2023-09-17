@@ -1,0 +1,23 @@
+
+<div class="container">
+<div class="row">
+
+  <div class="col-4" *ngFor="let cartItem of cartItems" >
+    <div class="card text-center">
+      <img [src]="cartItem.product.images[0]" class="card-img-top" style="height: 150px">
+      <div class="card-body">
+        <p>{{ cartItem.product.title }}</p>
+        <p>Price: {{ cartItem.product.price | currency : 'EGP' }}</p>
+        <p>Quantity: {{ cartItem.quantity }}</p>
+        <button (click)="decreaseQuantity(cartItem.product)" class="btn btn-secondary">-</button>
+        <button (click)="addToCart(cartItem.product)" class="btn btn-primary ms-2">+</button>
+        <button (click)="removeProductFromCart(cartItem.product)" class="btn btn-danger ms-2">Remove</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="mt-5">Total Price: {{ totalPrice | currency : 'EGP' }}</p>
+
+
+</div>

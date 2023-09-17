@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <div class="logo">
+    <a [routerLink]="['/products']" routerLinkActive="active-link">Products</a>
+  </div>
+  <div>
+    <a [routerLink]="['/cart']" routerLinkActive="active-link" class="cart ">Cart</a>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <a [routerLink]="['/login']" routerLinkActive="active-link">Login</a>
+    </li>
+    <li>
+      <a [routerLink]="['/register']" routerLinkActive="active-link">Register</a>
+    </li>
+  </ul>
+</nav>

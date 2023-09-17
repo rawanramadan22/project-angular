@@ -1,0 +1,37 @@
+.navbar {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.logo a {
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.cart {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.active-link {
+  font-weight: bold;
+  background-color: #007bff;
+}

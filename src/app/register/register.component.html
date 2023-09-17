@@ -1,0 +1,66 @@
+<div class="container mt-5">
+  <h3>Register Forms</h3>
+  <hr>
+  <form #productForm="ngForm" (ngSubmit)="submitAddProductForm(productForm)">
+    <div class="mb-3">
+      <label for="product-name-control" class="form-label">Name</label>
+      <input type="text" class="form-control" name="productName" id="product-name-control" aria-describedby="product_name_help"
+        [(ngModel)]="product.productName" required minlength="3" #productName="ngModel">
+      <div *ngIf="productName.touched && productName.invalid" id="product-name-help" class="text-danger form-text">
+        <small *ngIf="productName.errors?.['required']">This field is required</small>
+        <small *ngIf="productName.errors?.['minlength']">Minimum length is 3</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="product-email-controll" class="form-label">Email Address</label>
+      <input type="email" class="form-control" name="productEmail" id="product-email-controll"
+        aria-describedby="product_email_help" [(ngModel)]="product.productEmail" required minlength="3"
+        #productEmail="ngModel">
+    </div>
+
+    <div class="mb-3">
+      <label for="product-descriptation-controll" class="form-label">User Notes</label>
+      <input type="text" class="form-control" id="product-descriptation-controll"
+        aria-describedby="product_descriptation_help" name="productDescriptation" rows="5" [(ngModel)]="product.productDescriptation" required minlength="10"
+        maxlength="200" #productDescriptation="ngModel">
+      <div *ngIf="productDescriptation.touched && productDescriptation.invalid" id="product-descriptation-help"
+        class="text-danger form-text">
+        <small *ngIf="productDescriptation.errors?.['required']" id="product-descriptation-help">This field is required</small>
+        <small *ngIf="productDescriptation.errors?.['minlength']" id="product-descriptation-help">Minimum length is 10</small>
+        <small *ngIf="productDescriptation.errors?.['maxlength']" id="product-descriptation-help">Maximum length is 200</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="product-password-control" class="form-label">Password</label>
+      <input type="password" class="form-control" name="productPassword" id="product-password-control"
+        aria-describedby="product-password-help" [(ngModel)]="product.productPassword" required minlength="6"
+        pattern="^[a-zA-Z0-9!@#$%^&*]+$" #productPassword="ngModel" [ngModelOptions]="{updateOn: 'blur'}">
+      <div *ngIf="productPassword.touched && productPassword.invalid" id="product-password-help"
+        class="text-danger form-text">
+        <small *ngIf="productPassword.errors?.['required']" id="product-password-help">This field is required</small>
+        <small *ngIf="productPassword.errors?.['minlength']" id="product-password-help">Password must be at least 6 characters long</small>
+        <small *ngIf="productPassword.errors?.['pattern']" id="product-password-help">Invalid password format</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="product-repeat-password-control" class="form-label">Repeat Password</label>
+      <input type="password" class="form-control" name="repeatPassword" id="product-repeat-password-control"
+        [(ngModel)]="product.repeatPassword" required minlength="6" [ngModelOptions]="{ updateOn: 'blur' }"
+        appPasswordMatchValidator>
+      <div *ngIf="productForm.touched && productForm.hasError('required', 'repeatPassword')" class="text-danger form-text">
+        <small>This field is required</small>
+      </div>
+      <div *ngIf="productForm.touched && productForm.hasError('minlength', 'repeatPassword')" class="text-danger form-text">
+        <small>Password must be at least 6 characters lon</small>
+      </div>
+      <div *ngIf="productForm.controls['repeatPassword'].errors?.['passwordMismatch'] && productForm.hasError('passwordMismatch', 'repeatPassword')" class="text-danger form-text">
+        <small>Passwords do not match</small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="productForm.invalid">Register</button>
+  </form>
+</div>

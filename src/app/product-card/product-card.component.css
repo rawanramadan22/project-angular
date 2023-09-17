@@ -1,0 +1,23 @@
+
+.product-card h2 {
+  font-size: 18px;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #777;
+}
+.product-card p.price {
+  font-weight: bold;
+  color: #333;
+}
+
+.out-of-stock {
+  color: red;
+  font-weight: bold;
+}
+
+.in-stock {
+  color: green;
+  font-weight: bold;
+}
